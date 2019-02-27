@@ -43,7 +43,7 @@ public class LdapTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void testAddRario() throws Exception {
 		
 		Radio radio = new Radio();
