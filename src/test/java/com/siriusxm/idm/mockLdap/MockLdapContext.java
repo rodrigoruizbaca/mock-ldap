@@ -71,9 +71,18 @@ public abstract class MockLdapContext extends DirContextAdapter {
 	}
 
 	
+	public void bind(final Name name, final Object obj, final Attributes attributes) {
+		if (obj instanceof LdapDataEntry) {
+			store.put(name, ( LdapDataEntry ) obj);
+		} else {
+			LdapDataEntry entry = getEntry(obj);
+			store.put(name, entry);
+		}
+		
+	}
+	
 	public void bind(Name name, Object obj) throws NamingException {	
-		LdapDataEntry entry = getEntry(obj);
-		store.put(name, entry);
+		bind(name, obj, null);
 	}
 	
 	public NamingEnumeration<SearchResult> search(Name name, String filter, SearchControls cons)

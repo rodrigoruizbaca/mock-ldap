@@ -43,7 +43,7 @@ public class LdapTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testAddRario() throws Exception {
 		
 		Radio radio = new Radio();
@@ -71,7 +71,8 @@ public class LdapTest {
 		radio.setDn(dn);
 		radio.setHwId("123");
 			
-		context.bind(dn, radio);
+		template.create(radio);
+		
 		
 		Radio result = template.findByDn(dn, Radio.class);
 		
